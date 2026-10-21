@@ -1,0 +1,101 @@
+
+Repaso: Ejercicio Prolog ... Selección Argentina 
+
+
+Objetivo
+Identificar hechos y reglas para representar conocimiento utilizando el paradigma de programación lógica.
+
+
+Escenario
+La Selección Argentina de fútbol se consagró campeona de la Copa del Mundo en Qatar 2022. Entre los jugadores que integraron el equipo se encuentran Lionel Messi, Ángel Di María y Lautaro Martínez, Dibu Martinez. Ademas indicar que Dibu es el arquero de la seleccion argentina
+
+Ademas tambien son jugadores pero de la Seleccion de Portual, Cristiano Ronaldo
+
+Los futbolistas jugaron para la Selección Argentina y ganaron la Copa del Mundo.
+
+A partir de esta información, desarrollar un programa sencillo en Prolog que permita representar el conocimiento y realizar consultas.
+
+Consignas
+
+Identificar y definir los hechos que representan a los jugadores, la selección a la que pertenecen y el campeonato que ganaron.
+
+Definir una regla que permita determinar si un jugador es campeón del mundo.
+
+Definir otra regla que permita determinar si un jugador de la Selección Argentina ganó la Copa del Mundo.
+
+Realizar consultas para responder:
+
+¿Messi juega en la Selección Argentina?
+
+¿Messi ganó la Copa del Mundo?
+
+¿Qué jugadores ganaron la Copa del Mundo?
+
+¿Qué jugadores son campeones del mundo?
+
+¿Messi juega en la Selección de Brasil?
+
+¿Cristiano Ronaldo es campo del mundo?
+¿Quien es el Arquero de la seleccion campeona del mundo?
+Resultado esperado
+programa en Proog que contenga los hechos, las reglas y permita realizar las consultas propuestas.
+
+Importante!!
+Antes de escribir el código, identificar qué información corresponde a un hecho y qué información puede deducirse mediante una regla.
+
+%hechos
+juega_en(messi, argentina).
+juega_en(di_maria, argentina).
+juega_en(lautaro_martinez, argentina).
+juega_en(dibu_martinez, argentina).
+juega_en(cristiano_ronaldo, portugal).
+
+campeon(argentina, copa_del_mundo_2022).
+
+arquero(dibu_martinez, argentina).
+
+
+%reglas
+campeon_del_mundo(Jugador) :-
+    juega_en(Jugador, S),
+    campeon(S, copa_del_mundo_2022).
+
+gano_copa(Jugador) :-
+    juega_en(Jugador, argentina),
+    campeon(argentina, copa_del_mundo_2022).
+
+arquero_campeon(Arquero) :-
+    arquero(Arquero, S),
+    campeon(S, copa_del_mundo_2022).
+
+
+% 1. ¿Messi juega en la Seleccion Argentina?
+%    ?- juega_en(messi, argentina).
+%    Respuesta: true
+
+% 2. ¿Messi gano la Copa del Mundo?
+%    ?- gano_copa(messi).
+%    Respuesta: true
+
+% 3. ¿Que jugadores ganaron la Copa del Mundo?
+%    ?- gano_copa(J).
+%    Respuesta: J = messi ; J = di_maria ; J = lautaro_martinez ; J = dibu_martinez
+
+% 4. ¿Que jugadores son campeones del mundo?
+%    ?- campeon_del_mundo(J).
+%    Respuesta: J = messi ; J = di_maria ; J = lautaro_martinez ; J = dibu_martinez
+
+% 5. ¿Messi juega en la Seleccion de Brasil?
+%    ?- juega_en(messi, brasil).
+%    Respuesta: false  (no se puede probar con los hechos cargados)
+
+% 6. ¿Cristiano Ronaldo es campeon del mundo?
+%    ?- campeon_del_mundo(cristiano_ronaldo).
+%    Respuesta: false  (juega en portugal, que no es campeona en los hechos)
+
+% 7. ¿Quien es el arquero de la seleccion campeona del mundo?
+%    ?- arquero_campeon(A).
+%    Respuesta: A = dibu_martinez
+
+pagina
+https://swish.swi-prolog.org/
