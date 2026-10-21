@@ -1,0 +1,27 @@
+% ============ HECHOS ============
+% Un hecho es una verdad. Formato: nombre(dato1, dato2).
+% Lectura: "verstappen corre en el equipo red_bull".
+% Los datos van en minuscula (son constantes) y cada linea termina en punto.
+
+piloto(verstappen, red_bull).     % verstappen -> red_bull
+piloto(perez, red_bull).          % perez -> red_bull
+piloto(hamilton, mercedes).       % hamilton -> mercedes
+piloto(alonso, aston_martin).     % alonso -> aston_martin
+
+% Otro tipo de hecho: gano(Piloto, Carrera).
+% Lectura: "verstappen gano la carrera de bahrein".
+
+gano(verstappen, bahrein).        % verstappen gano en bahrein
+gano(perez, arabia).              % perez gano en arabia
+
+% ============ REGLA ============
+% Una regla es una verdad que depende de condiciones.
+% Formato: cabeza :- condicion1, condicion2.
+%   ':-' se lee "si"
+%   ','  se lee "y"
+% Aqui A, B y E empiezan con MAYUSCULA: son VARIABLES (pueden valer cualquier cosa).
+
+companeros(A, B) :-               % A y B son companeros SI...
+    piloto(A, E),                 % ...A corre en algun equipo E,
+    piloto(B, E),                 % ...y B corre en ESE MISMO equipo E,
+    A \= B.                       % ...y A y B no son la misma persona.
